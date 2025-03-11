@@ -24,52 +24,94 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a NestJS-based Employee Management System that allows managing employees (Interns, Admins, Engineers) using Prisma ORM and PostgreSQL as the database. The system supports CRUD operations such as:
+
+ - Creating new employees
+ - Fetching all employees
+ - Retrieving a specific employee by ID
+ - Updating employee details
+ - Deleting employees
+
+## Technologies Used
+- NestJS -Backend framework
+- Prisma ORM - Database interaction
+- PostgreSQL - Relational database
+- TypeScript -Strongly typed language
 
 ## Project setup
 
-```bash
-$ npm install
+**How to run locally**
+
+git clone https://github.com/officiabreezy/NestJS-employee.git
+
+cd NestJS-employee
+
+**Install NestJS Packages**
+```
+$ npm install @nestjs/core @nestjs/common @nestjs/config @nestjs/typeorm
+
 ```
 
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+**Install Prisma & PostgreSQL Driver**
+```
+npm install @prisma/client
+npm install --save-dev prisma
+npm install pg
 ```
 
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+**Run Database Migrations**
 ```
+npx prisma migrate dev --name init
+```
+
+**Start the Application**
+
+```
+npm run start
+```
+ *The server should start on* ```http://localhost:3000```
+
+## API Endpoints
+- Get All Employees
+````GET /employee````
+
+   *Returns a list of all employees.*
+
+- Get Employees by ID
+```GET /employees/:id```
+
+  *Fetch details of a specific employee.*
+
+- Create a New Employee
+```POST /employees```
+
+Body Example(JSON):
+```
+  {
+  "name": "Ade Segun",
+  "email": "adesegun12@example.com",
+  "role": "Intern"
+}
+````
+- Update an Employee
+```PATCH /employees/:id```
+
+Body Example(JSON):
+````
+  {
+   "role": "Engineer"
+}
+````
+- Delete an Employee
+```DELETE /employees/:id```
+
+  *Removes an employee from the database.*
 
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+If you are looking for a cloud-based platform to deploy your NestJS app
 
 ## Resources
 
@@ -87,12 +129,6 @@ Check out a few resources that may come in handy when working with NestJS:
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
